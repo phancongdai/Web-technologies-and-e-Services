@@ -1,4 +1,5 @@
 # ORA project
+- Please use Live Server in VScode to run this project.
 - This website gives some information about a student. It simulates the ctt.sis.hust.edu.vn, the details of website are designed following the given requirements.
 - After extracting the 'ORA.zip', the folder contains index.html, form.html, default.json and sub-folder index_files. 
 - The default.json saves the default data.
