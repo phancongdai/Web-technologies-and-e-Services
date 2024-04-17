@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://ctt-sis.hust.edu.vn/default.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="dxEdgeWebKit dxWindowsPlatform dxWebKitFamily dxBrowserVersion-122 dxTheme-Mulberry"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="./index_files/DXR.axd"><meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+<title> ORA Project </title>
+    <link href="./index_files/css" rel="stylesheet">
+    <link rel="stylesheet" href="./index_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./index_files/bootstrap-combobox.css">
+    <link rel="stylesheet" href="./index_files/docs.min.css">
+    <link rel="stylesheet" type="text/css" href="./index_files/Site.css">
+    <link rel="stylesheet" crossorigin="anonymous" href="./index_files/main.css">
+    <script src="./index_files/jquery.min.js.download"></script>
+    <script src="./index_files/bootstrap.min.js.download"></script>
+    <script src="./index_files/bootstrap-combobox.js.download"></script>
+    <script src="./index_files/validator.min.js.download"></script>
+    <script src="./index_files/site.js.download"></script>
+<!--Body-->
+<body id="formbody">
+  <div class="main">
+    <header>CHỈNH SỬA THÔNG TIN SINH VIÊN</header>
+      <div class="FillForm">
+        <span class="detail">Họ và tên</span>
+          <div>
+            <input type="text" placeholder="Nhập..." required>
+          </div>
+          <span class="detail">Năm vào trường</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Bậc đào tạo</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Chương trình</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Khoa/Viện quản lý</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Tình trạng học tập</span>
+          <div>
+            <input type="text"placeholder="Nhập...">
+          </div>
+          <span class="detail">Giới tính</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Lớp</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Khóa học</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <span class="detail">Email</span>
+          <div>
+            <input type="text" placeholder="Nhập...">
+          </div>
+          <br>
+          <div class = "confirm_button">
+            <button onclick="submit()">OK</button>
+            <!--<button onclick="event.preventDefault(); window.location.href = '/index.html';">Cancel</button>-->
+            <button onclick="window.location.href = './index.html';">Cancel</button>
+          </div>
+      </div>
+  </div>
+</body>
+<script>
+  const data =     {
+    "fullname": "Phan Công Đại",
+    "year": "2021",
+    "grade":"KSCLC-TN-TT-VN-ICT",
+    "program":"Công nghệ thông tin Global ICT 2021",
+    "department":"Trường Công nghệ thông tin và Truyền thông",
+    "state":"Học",
+    "sex":"Nam",
+    "cls":"ICT 01",
+    "course":"66",
+    "email":"dai.pc210147@gmail.com"
+  }
+  function submit() {
+    const inputs = document.getElementsByTagName('input')
+    if(inputs[0].value==null){
+        window.sessionStorage.setItem("fullname",data["fullname"]);
+    } else {window.sessionStorage.setItem("fullname", inputs[0].value);}
+    if(inputs[1].value) {
+        window.sessionStorage.setItem("year",data["year"]);
+    } else {window.sessionStorage.setItem("year",inputs[1].value);}
+    window.sessionStorage.setItem("grade",inputs[2].value);
+    window.sessionStorage.setItem("program",inputs[3].value);
+    window.sessionStorage.setItem("department",inputs[4].value);
+    window.sessionStorage.setItem("state",inputs[5].value);
+    window.sessionStorage.setItem("sex",inputs[6].value);
+    window.sessionStorage.setItem("cls",inputs[7].value);
+    window.sessionStorage.setItem("course",inputs[8].value);
+    window.sessionStorage.setItem("email",inputs[9].value);
+    window.location.href='index.html';
+
+    // window.sessionStorage.setItem = data // Khoi tao sessionStorage 
+    // document.getElementByTagName("strong").innerHTML= window.sessionStorage.getItem("") 
+
+  } 
+</script>
+</html>
