@@ -244,10 +244,73 @@ ASPx.createControl(ASPxClientPanel,'ctl00_ctl00_contentPane_MainPanel_leftMenuPa
         </div>
     </div>
     <div class="col-md-4">
-        <span class="dxeBase_Mulberry normalText" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo1"><strong>Họ và tên : </strong><span contenteditable id="fullname">Phan Công Đại</span> <br><strong>Năm vào trường : </strong><span id = "year"> 2021</span><br><strong>Bậc đào tạo : </strong><span id = "grade">KSCLC-TN-TT-VN-ICT</span><br><strong>Chương trình : </strong><span id="program">Công nghệ thông tin Global ICT 2021</span><br><strong>Khoa/Viện quản lý : </strong><span id ="department">Trường Công nghệ thông tin và Truyền thông</span><br><strong>Tình trạng học tập : </strong><span id = "state">Học</span><br></span>
+        <span class="dxeBase_Mulberry normalText" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo1">
+            <strong>Họ và tên : </strong><span id="fullname">Phan Công Đại</span> 
+            <br>
+            <strong>Năm vào trường : </strong><span id = "year"> 2021</span>
+            <br>
+            <strong>Bậc đào tạo : </strong><span id = "grade">KSCLC-TN-TT-VN-ICT</span>
+            <br>
+            <strong>Chương trình : </strong><span id="program">Công nghệ thông tin Global ICT 2021</span>
+            <br>
+            <strong>Khoa/Viện quản lý : </strong><span id ="department">Trường Công nghệ thông tin và Truyền thông</span>
+            <br>
+            <strong>Tình trạng học tập : </strong><span id = "state">Học</span>
+            <br>
+        </span>
     </div>
     <div class="col-md-4">
-        <span class="dxeBase_Mulberry normalText" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo2"><strong>Giới tính : </strong><span id ="sex">Nam</span><br><strong>Lớp : </strong><span id="cls">ICT 01-K66</span><br><strong>Khóa học : </strong><span id="course">66</span><br><strong>Email : </strong><span id="email">dai.pc210147@sis.hust.edu.vn</span><br></span>
+        <span class="dxeBase_Mulberry normalText" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo2">
+            <strong>Giới tính : </strong><span id ="sex">Nam</span>
+            <br>
+            <strong>Lớp : </strong><span id="cls">ICT 01-K66</span>
+            <br>
+            <strong>Khóa học : </strong><span id="course">66</span>
+            <br>
+            <strong>Email : </strong><span id="email">dai.pc210147@sis.hust.edu.vn</span>
+            <br>
+        </span>
+    </div>
+    <div class="col-md-4" id = "updateTextInfo" style="display: none;">
+        <span class ="dxeBase_Mulberry normalText" id="childUpdateTextInfo">
+            <strong>Họ và tên : </strong>
+            <input type="text" placeholder="Nhập họ và tên">
+            <br>
+            <strong>Năm vào trường : </strong>
+            <input type="number" min="1956" max="2024" placeholder="Nhập năm vào trường">
+            <br>
+            <strong>Bậc đào tạo : </strong>
+            <input type="text" placeholder="Nhập bậc đào tạo">
+            <br>
+            <strong>Chương trình : </strong>
+            <input type="text" placeholder="Nhập chương trình">
+            <br>
+            <strong>Khoa viện quản lý : </strong>
+            <input type="text" placeholder="Nhập khoa viện quản lý">
+            <br>
+            <strong>Tình trạng học : </strong>
+            <select id="stateList" style="width: 30%;">
+                <option value="Học">Học</option>
+                <option value="Thôi học">Thôi học</option>
+            </select>
+            <br>
+            <strong>Giới tính : </strong>
+            <select id="sexList" style="width: 30%;">
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+                <option value="Không xác định">Không xác định</option>
+            </select>
+            <br>
+            <strong>Lớp : </strong>
+            <input type="text" placeholder="Nhập lớp học">
+            <br>
+            <strong>Khóa học : </strong>
+            <input type="number" min="1" max="68" placeholder="Nhập khóa học">
+            <br>
+            <strong>Email : </strong>
+            <input type="text" placeholder="Nhập email">
+            <br>
+        </span>
     </div>
 </div>
 
@@ -264,6 +327,7 @@ ASPx.createControl(ASPxClientPanel,'ctl00_ctl00_contentPane_MainPanel_leftMenuPa
         <span class="dxeBase_Mulberry normalText" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo4"><strong>Số TC tích lũy : </strong>85<br><strong>Trình độ sinh viên : </strong>3<br><strong>Mức cảnh báo : </strong>M0<br></span>
     </div>
 </div>
+
 
 <div class="row">
     <span class="dxeBase_Mulberry Title" id="ctl00_ctl00_contentPane_MainPanel_MainContent_lbT3">THÔNG TIN CÁ NHÂN</span>
@@ -325,7 +389,7 @@ ASPx.createControl(ASPxClientPanel,'ctl00_ctl00_contentPane_MainPanel_leftMenuPa
 
 </body>
 <script>
-    const data =     {
+    const defaultData =     {
         "fullname": "Phan Công Đại",
         "userimage": "./index_files/usericon.png",
         "year": "2021",
@@ -338,10 +402,7 @@ ASPx.createControl(ASPxClientPanel,'ctl00_ctl00_contentPane_MainPanel_leftMenuPa
         "course":"66",
         "email":"dai.pc210147@gmail.com"
     }
-    const tmpData = {
-
-    }
-
+    var count = 0;
     const btnEdit = document.getElementById('edit_button');
     const btnOK = document.getElementById('btnOK');
     const btnReset = document.getElementById('btnReset');
@@ -358,133 +419,141 @@ ASPx.createControl(ASPxClientPanel,'ctl00_ctl00_contentPane_MainPanel_leftMenuPa
     const cls = document.getElementById("cls");
     const course = document.getElementById("course");
     const email = document.getElementById("email");
-    //console.log(userimage.src);
-    //
-    /*window.sessionStorage.setItem("fullname", document.getElementById("fullname").textContent);
-    window.sessionStorage.setItem("year", document.getElementById("year").textContent);
-    window.sessionStorage.setItem("grade", document.getElementById("grade").textContent);
-    window.sessionStorage.setItem("program", document.getElementById("program").textContent);
-    window.sessionStorage.setItem("department", document.getElementById("department").textContent);
-    window.sessionStorage.setItem("state", document.getElementById("state").textContent);
-    window.sessionStorage.setItem("sex", document.getElementById("sex").textContent);
-    window.sessionStorage.setItem("cls", document.getElementById("cls").textContent);
-    window.sessionStorage.setItem("course", document.getElementById("course").textContent);
-    window.sessionStorage.setItem("email", document.getElementById("email").textContent);*/
-
+    var extend = document.getElementById("extend");
+    var update_image = document.getElementById("update_image");
+    var mainInfo1 = document.getElementById("ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo1");
+    var mainInfo2 = document.getElementById("ctl00_ctl00_contentPane_MainPanel_MainContent_lbTextInfo2");
+    var updateTextInfo = document.getElementById("updateTextInfo");
+    const sexList = document.getElementById("sexList");
+    const stateList = document.getElementById("stateList");
+    const col = ["fullname", "year","grade","program", "department", "cls", "course", "email"];
+    var tmpData = {};
     function Default() {
-        fullname.textContent = data["fullname"];
+        fullname.textContent = defaultData["fullname"];
         leftfullname.textContent = fullname.textContent;
         for(let i=0; i<userimage.length; i++) {
-            userimage[i].src = data['userimage'];
+            userimage[i].src = defaultData['userimage'];
         }
-        //Xuserimage.src = data["userimage"];
-        year.textContent = data["year"];
-        grade.textContent =data["grade"];
-        program.textContent = data["program"];
-        department.textContent = data["department"];
-        state.textContent = data["state"];
-        sex.textContent = data["sex"];
-        cls.textContent = data["cls"];
-        course.textContent = data["course"];
-        email.textContent = data["email"];
-        extend.style.display = 'none';
+        year.textContent = defaultData["year"];
+        grade.textContent =defaultData["grade"];
+        program.textContent = defaultData["program"];
+        department.textContent = defaultData["department"];
+        state.textContent = defaultData["state"];
+        sex.textContent = defaultData["sex"];
+        cls.textContent = defaultData["cls"];
+        course.textContent = defaultData["course"];
+        email.textContent = defaultData["email"];
+        extend.style.display = 'none';  
         update_image.style.display = 'none';
+        updateTextInfo.style.display = 'none';
+        mainInfo1.style.display = 'block';
+        mainInfo2.style.display = 'block';
     }
 
     function Update() {
-        window.sessionStorage.setItem("fullname", document.getElementById("fullname").textContent);
+        window.sessionStorage.setItem("oldimage", window.sessionStorage.getItem("newimage"));
+        fullname.textContent = window.sessionStorage.getItem("fullname");
         leftfullname.textContent = fullname.textContent;
-        tmpData["fullname"] = document.getElementById("fullname").textContent;
-        window.sessionStorage.setItem("year", document.getElementById("year").textContent);
-        tmpData["year"] = document.getElementById("year").textContent;
-        window.sessionStorage.setItem("grade", document.getElementById("grade").textContent);
-        tmpData["grade"] = document.getElementById("grade").textContent;
-        window.sessionStorage.setItem("program", document.getElementById("program").textContent);
-        tmpData["program"] = document.getElementById("program").textContent;
-        window.sessionStorage.setItem("department", document.getElementById("department").textContent);
-        tmpData["department"] = document.getElementById("department").textContent;
-        window.sessionStorage.setItem("state", document.getElementById("state").textContent);
-        tmpData["state"] = document.getElementById("state").textContent;
-        window.sessionStorage.setItem("sex", document.getElementById("sex").textContent);
-        tmpData["sex"] = document.getElementById("sex").textContent;
-        window.sessionStorage.setItem("cls", document.getElementById("cls").textContent);
-        tmpData["cls"] = document.getElementById("cls").textContent;
-        window.sessionStorage.setItem("course", document.getElementById("course").textContent);
-        tmpData["course"] = document.getElementById("course").textContent;
-        window.sessionStorage.setItem("email", document.getElementById("email").textContent);
-        tmpData["email"] = document.getElementById("email").textContent;
-        tmpData['userimage'] = userimage.src;
-        extend.style.display = 'none';
-        update_image.style.display = "none";
-        console.log(tmpData);
+        for(let i=0; i<userimage.length; i++) {
+           userimage[i].src = window.sessionStorage.getItem("newimage");
+        }
+        year.textContent = window.sessionStorage.getItem("year");
+        grade.textContent = window.sessionStorage.getItem("grade");
+        program.textContent = window.sessionStorage.getItem("program");
+        department.textContent = window.sessionStorage.getItem("department");
+        state.textContent = window.sessionStorage.getItem("state");
+        sex.textContent = window.sessionStorage.getItem("sex");
+        cls.textContent = window.sessionStorage.getItem("cls");
+        course.textContent = window.sessionStorage.getItem("course");
+        email.textContent = window.sessionStorage.getItem("email");
+        extend.style.display = 'none';  
+        update_image.style.display = 'none';
+        updateTextInfo.style.display = 'none';
+        mainInfo1.style.display = 'block';
+        mainInfo2.style.display = 'block';
+        tmpData = {
+            "fullname": fullname.textContent,
+            "userimage" :userimage[0].src,
+            "year": year.textContent,
+            "grade": grade.textContent,
+            "program" :program.textContent,
+            "department": department.textContent,
+            "state": state.textContent,
+            "sex" :sex.textContent,
+            "cls" :cls.textContent,
+            "course": course.textContent,
+            "email" :email.textContent
+        }
     }
     if(Object.keys(window.sessionStorage).length === 1) {
         Default();
+    }
+    function checkInt(x) {
+        return !isNaN(x);
     }
 
 
 
     btnEdit.addEventListener('click', function(){
+        tmpData = {};
         console.log("Click on Edit button");
-        var extend = document.getElementById("extend");
-        var update_image = document.getElementById("update_image");
+        mainInfo1.style.display = 'none';
+        mainInfo2.style.display = 'none';
+        updateTextInfo.style.display = "block"
         extend.style.display = 'block';
         update_image.style.display = 'block';
         window.sessionStorage.setItem("oldimage", userimage[0].src);
+        //console.log(userimage[0].src);
         const update_userimage = document.getElementById('update_userimage');
+        //console.log(window.sessionStorage.getItem('oldimage'));
         update_userimage.addEventListener('change', function(event) {
             if (event.target.files.length > 0) {
                 window.sessionStorage.setItem("newimage",URL.createObjectURL(event.target.files[0],));
                 for(let i=0; i<userimage.length; i++) {
                     userimage[i].src = window.sessionStorage.getItem("newimage");
                 }
-            } else {
-                window.sessionStorage.setItem("newimage",window.sessionStorage.getItem("oldimage"));
             }
-        // 👇️ reset file input once you're done
-            update_userimage.value = null;
-        }); 
-        fullname.contentEditable = true;
-        year.contentEditable = true;
-        grade.contentEditable = true;
-        program.contentEditable = true;
-        department.contentEditable = true;
-        state.contentEditable = true;
-        sex.contentEditable = true;
-        cls.contentEditable = true;
-        course.contentEditable = true;
-        email.contentEditable = true;
 
+        // 👇️ reset file input once you're done
+            //update_userimage.value = null;
+        });
+        if(window.sessionStorage.getItem("newimage")==undefined) {
+                window.sessionStorage.setItem("newimage", window.sessionStorage.getItem("oldimage"));
+        }
+        if(count==0){
+            for(let i=0; i<col.length; i++){
+                window.sessionStorage.setItem(col[i],defaultData[col[i]]);
+            }
+        }
+        count+=1;
     });
     btnOK.addEventListener("click", function() {
         console.log("Click on OK button");
-        window.sessionStorage.setItem("oldimage", window.sessionStorage.getItem("newimage"));
+        //window.sessionStorage.setItem("oldimage", window.sessionStorage.getItem("newimage"));
+        childUpdateTextInfo = document.getElementById("childUpdateTextInfo");
+        input = childUpdateTextInfo.getElementsByTagName('input');
+        for(let i=0; i<input.length; i++) {
+            if(input[i].value!="") {
+                window.sessionStorage.setItem(col[i], input[i].value);
+                //console.log(col[i],input[i].value);
+            }
+        }
+        window.sessionStorage.setItem("state", stateList.value);
+        window.sessionStorage.setItem("sex", sexList.value);
         Update();
-        fullname.contentEditable = false;
-        year.contentEditable = false;
-        grade.contentEditable = false;
-        program.contentEditable = false;
-        department.contentEditable = false;
-        state.contentEditable = false;
-        sex.contentEditable = false;
-        cls.contentEditable = false;
-        course.contentEditable = false;
-        email.contentEditable = false;       
+        console.log(tmpData);
     });
 
     btnReset.addEventListener("click", function(){
         console.log("Click on Reset button");
         Default();
-        console.log(data);
+        console.log(defaultData);
     });
     btnCancel.addEventListener("click", function(){
         console.log("Click on Cancel button");
-        for(let i=0; i<userimage.length; i++) {
-            userimage[i].src = window.sessionStorage.getItem("oldimage");
-        }
+        window.sessionStorage.setItem("newimage", window.sessionStorage.getItem("oldimage"));
         Update();
-        //window.location.href = './index.html';
-        extend.style.display = 'none';
+        console.log(tmpData);
     })
 </script>
 </html>

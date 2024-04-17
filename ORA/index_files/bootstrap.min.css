@@ -7283,4 +7283,10 @@ button.close {
 #ctl00_ctl00_contentPane_MainPanel_MainContent_lbt1 {
     padding-right: 10px;
 }
+
+input {
+    width: 68%;
+    height: 22px;
+}
+
 /*# sourceMappingURL=bootstrap.min.css.map */
